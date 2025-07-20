@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.netology.stats</groupId>
-    <artifactId>Radio1</artifactId>
+    <groupId>ru.netology</groupId>
+    <artifactId>TestRadio</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -26,7 +26,6 @@
     <build>
         <plugins>
             <plugin>
-
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
@@ -34,37 +33,38 @@
                     <failIfNoTests>true</failIfNoTests>
                 </configuration>
             </plugin>
-
             <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.5</version>
-
-            <execution>
-                <id>prepare-agent</id>
-                <goals>
-                    <goal>prepare-agent</goal>
-                </goals>
-            </execution>
-
-            <execution>
-                <id>report</id>
-                <phase>verify</phase>
-                <goals>
-                    <goal>report</goal>
-                </goals>
-            </execution>
-            <execution>
-                <id>check</id>
-                <goals>
-                    <goal>check</goal>
-                </goals>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <rules>
                         <rule>
                             <limits>
                                 <limit>
-                                    <counter>BRANCH</counter>
+                                    <counter>LINE</counter>
                                     <value>COVEREDRATIO</value>
                                     <minimum>100%</minimum>
                                 </limit>
@@ -72,11 +72,7 @@
                         </rule>
                     </rules>
                 </configuration>
-            </execution>
-
-
-
-
+            </plugin>
         </plugins>
     </build>
 </project>

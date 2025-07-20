@@ -25,7 +25,7 @@ public class RadioTest {
     @Test
     public void MoreThenAcceptableStation() {
         Radio radio = new Radio();
-        radio.setCurrentStation(12);
+        radio.setCurrentStation(16);
         int expected = 0;
         Assertions.assertEquals(expected, radio.getCurrentStation());
     }
@@ -99,6 +99,16 @@ public class RadioTest {
         int expected =1;
         Assertions.assertEquals(expected,radio.getCurrentStation());
     }
+    @Test
+    public void Switchingstation(){
+    Radio radio = new Radio();
+        radio.setCurrentStation(6);
+        radio.next();
+    int expected =7;
+        Assertions.assertEquals(expected,radio.getCurrentStation());
+}
+
+
     @Test
     public void SwitchfromMinimumLimit(){
         Radio radio = new Radio();
